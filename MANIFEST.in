@@ -1,0 +1,3 @@
+graft clem_toolbox
+global-exclude *.py[cod] __pycache__ *.so *.ipynb
+recursive-exclude  clem_toolbox/jupy *
