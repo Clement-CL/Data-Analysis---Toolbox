@@ -10,6 +10,7 @@ setup(name='clem_toolbox',
       description="Project Description",
       packages=find_packages(),
       test_suite = 'tests',
+      requirements = requirements,
       # include_package_data: to install data from MANIFEST.in
       include_package_data=True,
       scripts=['scripts/clem_toolbox-run'],
