@@ -9,3 +9,7 @@ black
 yapf
 python-gitlab
 twine
+scikit-learn==0.23.2
+matplotlib.pyplot as plt
+seaborn
+statsmodels.api
