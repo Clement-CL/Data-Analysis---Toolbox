@@ -10,9 +10,15 @@ import missingno as mn
 
 def missing_value_viz(df, shape='matrix'):
     # return a bar representation of missing values and correlation between missing values
-    # print('''
-    #   \n Dataset missing values: \n
-    #   ''')
+    is_NaN = df.isnull()
+    row_has_NaN = is_NaN.any(axis=1)
+    print(f'''
+      \n \033[1m\033[4mDataset missing values:\033[0m
+      \n
+      * {len(df[row_has_NaN])} ({round(len(df[row_has_NaN])/len(df)*100,2)}% of total) rows have at least one missing value.
+      \n
+      ''')
+
     if shape=='all':
         mn.matrix(df, color=(142/255, 187/255, 217/255))
         mn.heatmap(df)
@@ -21,24 +27,10 @@ def missing_value_viz(df, shape='matrix'):
     if shape=='heatmap':
         mn.heatmap(df)
 
-def numerical_features_viz(df):
-    # print('''
-    #   \n Numerical features distribution: \n
-    #   ''')
-    num_data = df._get_numeric_data()
-    for feature in num_data.columns:
-        print(feature)
-        fig, ((ax0, ax1, ax2)) = plt.subplots(1,3,figsize=(20,4))
-        sns.histplot(data=num_data, x=feature, kde=True, ax=ax0).set_title(f'{feature}_Distribution')
-        sns.boxplot(data=num_data, x=feature, ax=ax1).set_title(f'{feature}_Boxplot')
-        ax2=sm.qqplot(num_data[feature],line='s',ax=ax2)
-        plt.show
-
-
 def correlation_heat_map(df):
-    # print('''
-    #   \n Feature correlation: \n
-    #   ''')
+    print('''
+      \n \033[1m\033[4mFeature correlation:\033[0m\n
+      ''')
     corrs = df.corr()
     # Set the default matplotlib figure size:
     fig, ax = plt.subplots(figsize=(12, 12))
@@ -54,11 +46,37 @@ def correlation_heat_map(df):
     # If you put plt.show() at the bottom, it prevents those useless printouts from matplotlib.
     plt.show()
 
+def numerical_features_viz(df):
+
+    print('''
+      \n \033[1m\033[4mNumerical features distribution:\033[0m \n
+      ''')
+    num_data = df._get_numeric_data()
+    for feature in num_data.columns:
+        print(f'\033[4m{feature.capitalize()}\033[0m')
+        fig, ((ax0, ax1, ax2)) = plt.subplots(1,3,figsize=(20,4))
+        sns.histplot(data=num_data, x=feature, kde=True, ax=ax0).set_title(f'{feature}_Distribution')
+        sns.boxplot(data=num_data, x=feature, ax=ax1).set_title(f'{feature}_Boxplot')
+        ax2=sm.qqplot(num_data[feature],line='s',ax=ax2, color=(120/255, 157/255, 200/255))
+        plt.show()
+
+def categorical_features_viz(df):
+    print('''
+      \n \033[1m\033[4mCategorical features distribution:\033[0m \n
+      ''')
+    cat_data = df.copy().fillna('MISSING').select_dtypes(include=["object"])
+    for feature in cat_data:
+        print(f'\033[4m{feature.capitalize()}\033[0m')
+        pd.value_counts(cat_data[feature]).plot.bar(figsize=(12,4), color=(142/255, 187/255, 217/255), edgecolor='black')
+        plt.show()
+
 
 def vizualise_data(df, shape='matrix'):
     missing_value_viz(df, shape=shape)
-    plt.show
-    numerical_features_viz(df)
-    plt.show
+    plt.show()
     correlation_heat_map(df)
-    plt.show
+    plt.show()
+    numerical_features_viz(df)
+    plt.show()
+    categorical_features_viz(df)
+    plt.show()
