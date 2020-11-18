@@ -10,6 +10,6 @@ yapf
 python-gitlab
 twine
 scikit-learn==0.23.2
-matplotlib.pyplot as plt
+matplotlib.pyplot
 seaborn
 statsmodels.api
