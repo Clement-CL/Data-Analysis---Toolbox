@@ -21,7 +21,8 @@ def missing_value_viz(df, shape='matrix'):
 def numerical_features_viz(df):
   num_data = df._get_numeric_data()
   for feature in num_data.columns:
-      fig, ((ax0, ax1, ax2)) = plt.subplots(1,3,figsize=(20,6))
+      print(f'\n {feature}')
+      fig, ((ax0, ax1, ax2)) = plt.subplots(1,3,figsize=(20,4))
       sns.histplot(data=num_data, x=feature, kde=True, ax=ax0).set_title(f'{feature}_Distribution')
       sns.boxplot(data=num_data, x=feature, ax=ax1).set_title(f'{feature}_Boxplot')
       ax2=sm.qqplot(num_data[feature],line='s',ax=ax2)
@@ -45,10 +46,16 @@ def correlation_heat_map(df):
 
 
 def vizualise_data(df, shape='matrix'):
+
+    print('''
+      \n Dataset missing values: \n
+      ''')
     missing_value_viz(df, shape=shape)
+    print('''
+      \n Numerical features distribution: \n
+      ''')
     numerical_features_viz(df)
+    print('''
+      \n Feature correlation: \n
+      ''')
     correlation_heat_map(df)
-
-
-
-
