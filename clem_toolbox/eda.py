@@ -8,7 +8,7 @@ import statsmodels.api as sm
 import missingno as mn
 
 
-def missing_value_viz(df, shape='matrix'):
+def missing_value_vis(df, shape='matrix'):
     # return a bar representation of missing values and correlation between missing values
     is_NaN = df.isnull()
     row_has_NaN = is_NaN.any(axis=1)
@@ -46,7 +46,7 @@ def correlation_heat_map(df):
     # If you put plt.show() at the bottom, it prevents those useless printouts from matplotlib.
     plt.show()
 
-def numerical_features_viz(df):
+def numerical_features_vis(df):
 
     print('''
       \n \033[1m\033[4mNumerical features distribution:\033[0m \n
@@ -60,7 +60,7 @@ def numerical_features_viz(df):
         ax2=sm.qqplot(num_data[feature],line='s',ax=ax2, color=(120/255, 157/255, 200/255))
         plt.show()
 
-def categorical_features_viz(df):
+def categorical_features_vis(df):
     print('''
       \n \033[1m\033[4mCategorical features distribution:\033[0m \n
       ''')
@@ -71,12 +71,12 @@ def categorical_features_viz(df):
         plt.show()
 
 
-def vizualise_data(df, shape='matrix'):
-    missing_value_viz(df, shape=shape)
+def visualise_all_data(df, shape='matrix'):
+    missing_value_vis(df, shape=shape)
     plt.show()
     correlation_heat_map(df)
     plt.show()
-    numerical_features_viz(df)
+    numerical_features_vis(df)
     plt.show()
-    categorical_features_viz(df)
+    categorical_features_vis(df)
     plt.show()
