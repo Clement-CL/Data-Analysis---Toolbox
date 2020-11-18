@@ -2,10 +2,10 @@
 #          INSTALL & TEST
 # ----------------------------------
 install_requirements:
-    @pip install -r requirements.txt
+		@pip install -r requirements.txt
 
 install:
-    @pip install .
+		@pip install .
 
 check_code:
-    @flake8 scripts/* process/*.py
+		@flake8 scripts/* process/*.py
