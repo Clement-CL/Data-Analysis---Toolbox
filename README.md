@@ -43,14 +43,14 @@ $ visualise_all_data(df, shape='matrix')
 
 ```bash
 $ drop_columns(df, threshold=None)
-    # drop columns that have more missing values than a selected threshold
-    # if threshold agrument is not specified user is prompted using input()
+  # drop columns that have more missing values than a selected threshold
+  # if threshold agrument is not specified user is prompted using input()
 ```
 
 ```bash
 $ one_hot_encoding(df, unknown='error')
-# return a new dataframe with encoded features
-# encoded features name = original feature name + value
+  # return a new dataframe with encoded features
+  # encoded features name = original feature name + value
 ```
 
 # Continus integration
