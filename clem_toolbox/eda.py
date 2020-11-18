@@ -5,7 +5,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import statsmodels.api as sm
+import missingno as mn
 
+
+def missing_value_viz(df, shape='matrix'):
+    # return a bar representation of missing values and correlation between missing values
+    if shape=='all':
+        mn.matrix(df, color=(142/255, 187/255, 217/255))
+        mn.heatmap(df)
+    if shape=='matrix':
+        mn.matrix(df, color=(142/255, 187/255, 217/255))
+    if shape=='heatmap':
+        mn.heatmap(df)
 
 def numerical_features_viz(df):
   num_data = df._get_numeric_data()
@@ -31,5 +42,13 @@ def correlation_heat_map(df):
     ax.set_yticklabels(ax.yaxis.get_ticklabels(), fontsize=14, rotation=0)
     # If you put plt.show() at the bottom, it prevents those useless printouts from matplotlib.
     plt.show()
+
+
+def vizualise_data(df, shape='matrix'):
+    missing_value_viz(df, shape=shape)
+    numerical_features_viz(df)
+    correlation_heat_map(df)
+
+
 
 
