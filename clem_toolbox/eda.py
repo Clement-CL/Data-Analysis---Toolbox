@@ -28,6 +28,7 @@ def missing_value_vis(df, shape='matrix'):
         mn.heatmap(df)
 
 def correlation_heat_map(df):
+    assert type(df) == pandas.core.frame.DataFrame
     print('''
       \n \033[1m\033[4mFeature correlation:\033[0m\n
       ''')
@@ -47,7 +48,7 @@ def correlation_heat_map(df):
     plt.show()
 
 def numerical_features_vis(df):
-
+    # Return an histogram, a boxplot and a qqplot for all numerical columns
     print('''
       \n \033[1m\033[4mNumerical features distribution:\033[0m \n
       ''')
@@ -61,6 +62,7 @@ def numerical_features_vis(df):
         plt.show()
 
 def categorical_features_vis(df):
+    # Return a bar chart showing the repartition between unique values
     print('''
       \n \033[1m\033[4mCategorical features distribution:\033[0m \n
       ''')
@@ -80,3 +82,4 @@ def visualise_all_data(df, shape='matrix'):
     plt.show()
     categorical_features_vis(df)
     plt.show()
+
