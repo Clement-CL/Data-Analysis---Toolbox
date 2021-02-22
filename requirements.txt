@@ -8,7 +8,7 @@ flake8
 yapf
 python-gitlab
 twine
-scikit-learn==0.23.2
+scikit-learn==0.24.1
 matplotlib==3.3.3
 seaborn==0.11.0
 statsmodels==0.11.1
