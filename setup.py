@@ -13,5 +13,5 @@ setup(name='clem_tools',
       requirements = requirements,
       # include_package_data: to install data from MANIFEST.in
       include_package_data=True,
-      scripts=['scripts/clem_toolbox-run'],
+      scripts=['scripts/clem-toolbox-computedist-run'],
       zip_safe=False)
