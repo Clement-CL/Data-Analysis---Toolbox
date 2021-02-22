@@ -1,4 +1,4 @@
-# Calculate distances between two points on a map using coordinates
+# Calculate distances between two points using coordinates - longitude and latitude
 
 from math import radians, cos, sin, asin, sqrt
 
